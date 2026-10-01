@@ -1,0 +1,213 @@
+/* ===== Design system: Career & Alumni Portal ===== */
+:root {
+  --navy: #12264a;
+  --blue: #1f4e9e;
+  --blue-dark: #183d7c;
+  --gold: #e8a317;
+  --surface: #f5f7fb;
+  --card: #ffffff;
+  --line: #dce3ee;
+  --ink: #1b2333;
+  --muted: #5b6577;
+  --success: #1e8e5a;
+  --danger: #c0392b;
+  --radius: 10px;
+  --bs-primary: var(--blue);
+  --bs-body-font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --bs-body-color: var(--ink);
+  --bs-body-bg: var(--surface);
+}
+
+body { font-family: var(--bs-body-font-family); color: var(--ink); background: var(--surface); }
+h1, h2, h3, h4, h5 { color: var(--navy); font-weight: 700; letter-spacing: -0.01em; }
+a { color: var(--blue); }
+
+.btn-primary { --bs-btn-bg: var(--blue); --bs-btn-border-color: var(--blue);
+  --bs-btn-hover-bg: var(--blue-dark); --bs-btn-hover-border-color: var(--blue-dark);
+  --bs-btn-active-bg: var(--blue-dark); --bs-btn-active-border-color: var(--blue-dark); font-weight: 600; }
+.btn-accent { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 700; }
+.btn-accent:hover { background: #d29411; border-color: #d29411; color: var(--navy); }
+
+.form-control, .form-select { border-color: var(--line); border-radius: 8px; padding: .65rem .85rem; }
+.form-control:focus, .form-select:focus { border-color: var(--blue); box-shadow: 0 0 0 .2rem rgba(31, 78, 158, .15); }
+.form-label { font-weight: 600; font-size: .9rem; }
+
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+.card-soft { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+
+/* ----- Halaman auth (login & register) ----- */
+.auth-shell { min-height: 100vh; display: grid; grid-template-columns: minmax(300px, 5fr) 7fr; }
+.auth-aside { background: var(--navy); color: #d8e1f2; padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; }
+.auth-brand { color: #fff; font-weight: 800; font-size: 1.15rem; text-decoration: none; display: inline-flex; align-items: center; gap: .6rem; }
+.auth-brand-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--gold); color: var(--navy);
+  display: inline-grid; place-items: center; font-weight: 800; }
+.auth-aside h1 { color: #fff; font-size: 2.1rem; line-height: 1.2; max-width: 16ch; }
+.auth-aside p { max-width: 38ch; }
+.auth-aside ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; font-size: .95rem; }
+.auth-aside li::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); margin-right: .6rem; }
+.auth-main { display: flex; align-items: center; justify-content: center; padding: 2.5rem 1.25rem; }
+.auth-card { width: 100%; max-width: 460px; }
+
+.role-choice { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+.role-choice input { position: absolute; opacity: 0; pointer-events: none; }
+.role-choice label { border: 1px solid var(--line); border-radius: 8px; padding: .75rem; text-align: center; cursor: pointer; font-weight: 600; background: #fff; }
+.role-choice input:checked + label { border-color: var(--blue); background: #eaf0fb; color: var(--blue-dark); }
+.role-choice input:focus-visible + label { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+@media (max-width: 860px) {
+  .auth-shell { grid-template-columns: 1fr; }
+  .auth-aside { padding: 1.5rem; gap: 1.25rem; }
+  .auth-aside h1 { font-size: 1.5rem; max-width: none; }
+  .auth-aside ul { display: none; }
+}
+
+/* ----- Halaman sementara (placeholder Tahap 2) ----- */
+.placeholder-page { max-width: 640px; margin: 4rem auto; padding: 0 1rem; }
+
+/* ===== Komponen bersama ===== */
+.brand-mark { width: 32px; height: 32px; border-radius: 8px; background: var(--gold); color: var(--navy);
+  display: inline-grid; place-items: center; font-weight: 800; flex: none; }
+.avatar-box { width: 44px; height: 44px; border-radius: 10px; background: #e6edf8; color: var(--blue-dark);
+  display: grid; place-items: center; font-weight: 700; flex: none; }
+.avatar-sm { width: 34px; height: 34px; font-size: .8rem; border-radius: 50%; }
+.min-w-0 { min-width: 0; }
+
+.badge[class*="status-"] { font-weight: 600; padding: .4em .7em; border-radius: 999px; }
+.status-pending  { background: #fff4d6; color: #7a5600; }
+.status-reviewed { background: #e3ecfb; color: #1b4382; }
+.status-accepted, .status-verified, .status-open { background: #dcf3e6; color: #17693f; }
+.status-rejected, .status-closed, .status-expired { background: #fbe1de; color: #922b20; }
+
+.empty-state { text-align: center; padding: 2.5rem 1rem; color: var(--muted); }
+.empty-state i { font-size: 2rem; color: #a9b6cc; display: block; margin-bottom: .5rem; }
+
+/* ===== Landing page ===== */
+.site-nav { background: rgba(255,255,255,.96); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.site-nav .navbar-brand { font-weight: 800; color: var(--navy); }
+.site-nav .nav-link { font-weight: 500; color: var(--ink); }
+.site-nav .nav-link:hover { color: var(--blue); }
+
+.hero { background: var(--navy); color: #d8e1f2; padding: 4rem 0 4.5rem; }
+.hero h1 { color: #fff; font-size: clamp(2rem, 4.5vw, 3.1rem); line-height: 1.12; max-width: 18ch; }
+.hero .lead { max-width: 44ch; color: #c3d0e8; }
+.search-box { background: #fff; border-radius: 12px; padding: .6rem; display: grid; grid-template-columns: 1fr 200px auto; gap: .5rem; margin-top: 2rem; max-width: 720px; }
+.search-box .form-control, .search-box .form-select { border: 0; background: var(--surface); }
+.hero-chips { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; font-size: .9rem; }
+.hero-chips a { color: #fff; border: 1px solid rgba(255,255,255,.35); padding: .2rem .8rem; border-radius: 999px; text-decoration: none; }
+.hero-chips a:hover { background: rgba(255,255,255,.12); }
+
+.closing-panel { background: #fff; color: var(--ink); border-radius: 12px; padding: 1.25rem; }
+.closing-panel h2 { font-size: 1rem; margin-bottom: .75rem; }
+.closing-row { display: flex; gap: .8rem; align-items: center; padding: .7rem 0; border-top: 1px solid var(--line); text-decoration: none; color: inherit; }
+.closing-row:hover .closing-title { color: var(--blue); }
+.closing-title { font-weight: 600; line-height: 1.25; }
+
+.section { padding: 4rem 0; }
+.section-alt { background: #fff; border-block: 1px solid var(--line); }
+.section-head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1.75rem; flex-wrap: wrap; }
+.section-head h2 { font-size: 1.6rem; margin: 0; }
+.section-head p { margin: .25rem 0 0; color: var(--muted); }
+
+.job-card { position: relative; display: flex; flex-direction: column; height: 100%; background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 1.1rem; transition: border-color .15s, box-shadow .15s; }
+.job-card:hover { border-color: var(--blue); box-shadow: 0 6px 18px rgba(18,38,74,.08); }
+.job-meta { display: flex; flex-wrap: wrap; gap: .35rem 1rem; margin-top: .9rem; font-size: .85rem; color: var(--muted); }
+.job-meta i { margin-right: .2rem; }
+
+.stat-band { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat-band > div { padding: .5rem 1.5rem; border-left: 1px solid var(--line); }
+.stat-band > div:first-child { border-left: 0; padding-left: 0; }
+.stat-band .num { font-size: 2.4rem; font-weight: 800; color: var(--navy); line-height: 1; }
+.stat-band .lbl { color: var(--muted); margin-top: .35rem; }
+
+.company-tile { display: flex; gap: .9rem; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem; height: 100%; }
+
+.service-item { padding-left: 1rem; border-left: 3px solid var(--gold); }
+.service-item h3 { font-size: 1rem; margin-bottom: .25rem; }
+
+.news-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; height: 100%; }
+.news-card time { font-size: .85rem; color: var(--muted); }
+
+.site-footer { background: var(--navy); color: #b8c6e0; padding: 3rem 0 1.5rem; }
+.site-footer a { color: #b8c6e0; text-decoration: none; }
+.site-footer a:hover { color: #fff; }
+.site-footer li { margin-bottom: .35rem; }
+
+@media (max-width: 860px) {
+  .search-box { grid-template-columns: 1fr; }
+  .stat-band { grid-template-columns: 1fr 1fr; row-gap: 1.5rem; }
+  .stat-band > div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .hero { padding: 2.5rem 0 3rem; }
+  .section { padding: 2.75rem 0; }
+}
+
+/* ===== Layout dashboard ===== */
+.dash-shell { display: flex; min-height: 100vh; }
+.dash-sidebar { --bs-offcanvas-width: 260px; --bs-offcanvas-bg: var(--navy); --bs-offcanvas-color: #d8e1f2; }
+.dash-sidebar .offcanvas-header { border-bottom: 1px solid rgba(255,255,255,.12); }
+.dash-brand { padding: 1.4rem 1.25rem 1rem; }
+.dash-role { padding: 0 1.25rem 1rem; font-size: .85rem; color: var(--gold); font-weight: 600; }
+.dash-nav { display: flex; flex-direction: column; gap: .15rem; padding: 0 .75rem; }
+.dash-link { display: flex; align-items: center; gap: .7rem; padding: .6rem .8rem; border-radius: 8px; color: #d8e1f2; text-decoration: none; font-weight: 500; }
+.dash-link:hover { background: rgba(255,255,255,.08); color: #fff; }
+.dash-link.active { background: var(--gold); color: var(--navy); font-weight: 700; }
+.dash-link.disabled { opacity: .45; cursor: not-allowed; }
+.dash-link.disabled:hover { background: transparent; color: #d8e1f2; }
+.dash-link small { margin-left: auto; font-size: .7rem; }
+.dash-side-foot { margin-top: auto; padding: 1rem .75rem; border-top: 1px solid rgba(255,255,255,.12); }
+/* Di layar besar Bootstrap membuat offcanvas-lg transparan, jadi warna diberikan oleh pembungkusnya. */
+@media (min-width: 992px) {
+  .dash-side-wrap { flex: 0 0 260px; background: var(--navy); color: #d8e1f2; position: sticky; top: 0; height: 100vh;
+    overflow-y: auto; display: flex; flex-direction: column; }
+  .dash-sidebar { flex: 1 1 auto; }
+  .dash-sidebar .offcanvas-body { flex: 1 1 auto; }
+}
+.dash-main { flex: 1; min-width: 0; }
+.dash-topbar { display: flex; align-items: center; gap: .75rem; padding: .8rem 1.25rem; background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+.dash-title { font-size: 1.15rem; margin: 0; }
+.dash-content { padding: 1.5rem 1.25rem 3rem; max-width: 1200px; }
+
+.stat-card { display: flex; gap: 1rem; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem; height: 100%; }
+.stat-icon { width: 46px; height: 46px; border-radius: 10px; display: grid; place-items: center; font-size: 1.3rem; flex: none; }
+.tone-blue { background: #e3ecfb; color: var(--blue); }
+.tone-gold { background: #fdf0d2; color: #9a6a00; }
+.tone-green { background: #dcf3e6; color: var(--success); }
+.tone-red { background: #fbe1de; color: var(--danger); }
+.tone-slate { background: #e8ecf3; color: #3f4b61; }
+.stat-value { font-size: 1.6rem; font-weight: 800; color: var(--navy); line-height: 1.1; }
+.stat-label { color: var(--muted); font-size: .88rem; }
+
+.panel { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
+.panel-head { padding: .9rem 1.1rem; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.panel-head h2 { font-size: 1rem; margin: 0; }
+.panel-body { padding: 1.1rem; }
+.table-clean { margin: 0; }
+.table-clean th { font-size: .82rem; color: var(--muted); font-weight: 600; background: #f8fafd; white-space: nowrap; }
+.table-clean td, .table-clean th { padding: .7rem 1.1rem; vertical-align: middle; }
+.chart-box { position: relative; height: 260px; }
+.progress { height: .6rem; background: #e6ecf5; }
+.progress-bar { background: var(--blue); }
+
+/* ===== Profil ===== */
+.profile-photo { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; background: #e6edf8; border: 3px solid #fff;
+  box-shadow: 0 0 0 1px var(--line); display: grid; place-items: center; font-size: 2.2rem; font-weight: 700; color: var(--blue-dark); margin: 0 auto; }
+.form-section + .form-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.form-section h2 { font-size: 1rem; margin-bottom: 1rem; }
+.info-list dt { font-size: .82rem; color: var(--muted); font-weight: 600; }
+.info-list dd { margin-bottom: .9rem; overflow-wrap: anywhere; }
+
+/* ===== Logo perusahaan ===== */
+.avatar-box.has-img { background: #fff; border: 1px solid var(--line); overflow: hidden; padding: 3px; }
+.avatar-box img { width: 100%; height: 100%; object-fit: contain; }
+.profile-photo.logo-square { border-radius: 16px; object-fit: contain; background: #fff; padding: 8px; font-size: 2rem; }
+
+/* ===== Lowongan ===== */
+.filter-bar { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem; }
+.job-detail-text { white-space: normal; line-height: 1.7; }
+.table-actions { display: flex; gap: .35rem; justify-content: flex-end; flex-wrap: wrap; }
+
+/* ===== Lamaran ===== */
+.cover-letter { white-space: pre-wrap; line-height: 1.7; }
+.nav-pills .nav-link { color: var(--ink); background: #fff; border: 1px solid var(--line); font-weight: 500; }
+.nav-pills .nav-link.active { background: var(--blue); border-color: var(--blue); color: #fff; }

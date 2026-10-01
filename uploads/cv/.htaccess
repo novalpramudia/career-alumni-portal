@@ -1,0 +1,3 @@
+# CV bersifat pribadi: akses langsung ke file diblokir.
+# CV hanya dibuka lewat api/cv.php setelah pengecekan hak akses.
+Require all denied
