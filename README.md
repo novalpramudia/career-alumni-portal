@@ -403,14 +403,6 @@ Perubahan pada kode sebaiknya dilakukan secara bertahap. Sebelum perubahan digab
 
 Jangan menghapus file yang tampak duplikat sebelum memastikan bahwa file tersebut tidak digunakan oleh halaman lain.
 
-## 17. Lisensi
-
-Tambahkan informasi lisensi sesuai ketentuan yang dipilih oleh pemilik project.
-
-## 18. Penulis dan Konteks Akademik
-
-Project ini dikembangkan sebagai tugas mata kuliah **Pemrograman Web Lanjut** dengan fokus pada pengembangan aplikasi web full-stack, integrasi database relasional, autentikasi dan otorisasi pengguna, pengolahan data, serta penerapan dasar keamanan aplikasi web.
-
 ---
 
 **Career & Alumni Portal** — Mendukung pengelolaan alumni, pengembangan karier, dan layanan career center kampus melalui aplikasi web yang terintegrasi.
